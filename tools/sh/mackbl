@@ -1,0 +1,12 @@
+#!/bin/sh
+# ===========================================================================
+# FILE        : vimrc/tools/sh/mackbl
+# DESCRIPTION : Prints the keyboard layout name for mac
+# AUTHOR      : @diacus (diacus.magnuz@gmail.com)
+# CREATION    : Mon Sep 18 17:02:22 CDT 2017
+# VERSION     : 2.1
+# ===========================================================================
+declare plist=$HOME/Library/Preferences/com.apple.HIToolbox.plist
+declare awk=/usr/bin/awk
+declare awk_script='/KeyboardLayout Name/ {print $4}'
+defaults read $plist AppleSelectedInputSources | $awk -F \" "$awk_script"

@@ -1,0 +1,120 @@
+#!/usr/bin/perl -w
+# ===========================================================================
+# FILE        : vimrc/tools/wp/compiler
+# DESCRIPTION : Transforms an HTML document adding WordPress specific tags
+# AUTHOR      : @diacus (diacus.magnuz@gmail.com)
+# LAST CHANGE : dom jul 30 00:12:05 CDT 2017
+# CREATION    : Sat May 20 00:00:00 CDT 2017
+# VERSION     : 2.1
+# ===========================================================================
+use strict;
+use HTML::Parser();
+use Data::Dumper;
+
+# States
+use constant {
+  HEADER => 0,
+  BODY   => 1,
+  CODE   => 2,
+};
+
+my $state = HEADER;
+
+# Tags
+my $figure = '<p.*>(<a.*><img.*/></a>)</p>';
+
+# Default language used on source code listings
+my $lang = 'raw';
+
+# Read the HTML from stdin
+while (<>)
+{
+  my $txt = $_;
+  if ($state eq HEADER)
+  {
+    $state = BODY if (/<body>/);
+    next;
+  }
+
+  last if (/<\/body>/);
+
+  # It is possible to specify the language of the code listing using comments
+  # like <!--lang-start:python--> and <!--lang-end-->
+  if (/<!--(.*)-->/)
+  {
+    my $comment = $1;
+
+    print $_ if ($comment =~ m/more/);
+
+    if ($comment =~ m/lang-start:(\S+)/)
+    {
+      $lang = $1;
+    }
+
+    $lang = 'raw' if ($comment =~ m/lang-end/);
+
+    next;
+  }
+
+  # Replace standard tags <pre><code> ... </code></pre> by [$lang] ... [/$lang]
+  # if no other language is specified.
+  if (/<pre><code>/)
+  {
+    $txt =~ s/<pre><code>/\n[$lang]\n/g;
+    $state = CODE;
+  }
+
+  if (/<\/code><\/pre>/)
+  {
+    $txt =~ s/<\/code><\/pre>/\n[\/$lang]\n/g;
+    $state = BODY;
+  }
+
+  # Replace <code> tag for inline listings
+  $txt =~ s/<code>/[$lang]/g;
+  $txt =~ s/<\/code>/[\/$lang]/g;
+
+  # Dont need to use HTML codes for these characters.
+  if ($state eq CODE and /&[^&]+;/)
+  {
+    $txt =~ s/&quot;/"/g;
+    $txt =~ s/&#39;/'/g;
+    $txt =~ s/&lt;/</g;
+    $txt =~ s/&gt;/>/g;
+  }
+
+  # Convert markdown code like [![CAPTION][IMAGE]][LINK] into wordpress tags:
+  # [caption] <a href=LINK><img src=IMAGE/></a> CAPTION [/caption]
+  if (/(<a.*><img.*\/><\/a>)/)
+  {
+    my $fig  = $1;
+    my $alt;
+    my $caption;
+    my $href;
+    my $id;
+    my $src;
+    my $tag_a;
+    my $tag_img;
+
+    $fig =~ m/href="(.*)".*src="(.*)".*alt="(.*)"/;
+
+    $href = $1;
+    $src  = $2;
+    $alt  = $3;
+
+    $href =~ m/attachment_id=(\d+)$/;
+    $id   = $1;
+
+    $tag_img  = qq(<img class="wp-image-$id size-full" title="$alt" );
+    $tag_img .= qq(alt="$alt" src="$src" width="100%"/>);
+
+    $tag_a    = qq(<a target="_blank" href="$href">$tag_img</a>);
+
+    $caption  = qq(\n[caption id="attachment_$id" align="aligncenter"]);
+    $caption .= $tag_a . $alt . "[/caption]\n";
+
+    $txt = $caption;
+  }
+
+  print $txt;
+}

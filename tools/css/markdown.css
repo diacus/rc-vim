@@ -1,0 +1,128 @@
+<style type="text/css">
+/* ========================================================================== *
+ * FILE        : tools/css/markdown.css                                       *
+ * DESCRIPTION : CSS style sheet for HTML documents generated from markdown.  *
+ * COPIED BY   : @diacus (diacus.magnuz@gmail.com)                            *
+ * LAST CHANGE : Thu Sep 21 16:39:33 CDT 2017                                 *
+ * CREATION    : Wed May 17 00:00:00 CDT 2017                                 *
+ * VERSION     : 2.1                                                          *
+ * ========================================================================== */
+body
+{
+  max-width:650px;
+  margin-left:auto;
+  margin-right:auto;
+  padding:0 15px;
+  font-family:Sans-serif;
+  font-size:12px;
+}
+
+h1,h2,h3,h4,h5,h6
+{
+  color:#7FA2A5;
+}
+
+h1
+{
+  text-align:center;
+  font-size:3em;
+}
+
+table,ul,ol,p
+{
+  text-align : justify;
+}
+
+img
+{
+  width:100%;
+}
+
+figure
+{
+  width:100%;
+  margin-left: auto;
+  margin-right:auto;
+}
+
+figure > figcaption
+{
+  display:block;
+  caption-side: top;
+  text-align : center;
+  font-size: 0.8em;
+}
+
+table
+{
+  width:95%;
+  border-collapse: collapse;
+  text-align:left;
+  margin-left: auto;
+  margin-right:auto;
+}
+
+th
+{
+  padding:10px;
+  border-width: 0px 0px 3px 0px;
+  border-style: double;
+  border-color: #7FA2A5;
+}
+
+td
+{
+  padding: 10px;
+}
+
+tr:nth-child(even)
+{
+  background-color:#eee;
+}
+
+.odd:hover
+{
+  background-color: #f8f8f8;
+}
+
+.even:hover
+{
+  background-color: #e8e8e8;
+}
+
+thead
+{
+  border-color:#7FA2A5;
+  border-radius: 10px;
+}
+
+p > code, td > code, a > code, li > code
+{
+  color: #444;
+  background-color:#f0f0f0;
+  padding:0px 4px;
+  margin: 0px 2px;
+  border-radius:3px;
+  font-size:0.9em;
+}
+
+blockquote, pre
+{
+  display: block;
+  border-color: #7FA2A5;
+  padding:10px 5px;
+  margin: 25px 0px;
+  border-radius: 3px;
+  background-color: #f9f9f9;
+  overflow-x:auto;
+}
+
+blockquote
+{
+  border-color: #0E4268;
+  padding:10px 5px;
+  font-style:italic;
+}
+
+/* vim:set ts=2 sw=2 et: */
+</style>
