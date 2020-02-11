@@ -2,7 +2,7 @@
 " FILE        : autoload/kb.vim
 " DESCRIPTION : Helper functions for plugin/kb.vim
 " AUTHOR      : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : dom ago 19 22:06:36 CDT 2018
+" LAST CHANGE : Tue Feb 11 17:01:56 CST 2020
 " CREATION    : sáb ago 19 02:03:43 CDT 2017
 " VERSION     : 2.1
 " ===========================================================================
@@ -11,10 +11,7 @@ function! kb#set_layout()
   let platform = util#identify_platform()
   if platform == 'MacOS' "We're on Mac OS
     " TODO: There has to be a better way
-    let l:kbname = system($HOME . "/.vim/tools/sh/mackbl")
-    if l:kbname =~ 'U.S.' || l:kbname =~ 'US'
-      let g:kb_layout='en'
-    endif
+    let g:kb_layout='en'
   else " We assume Linux
     let g:kb_layout=util#chomp(
       \ system("localectl status | awk '/Layout/ {print $3}'")
@@ -73,8 +70,9 @@ function! kb#en()
 endfunction
 
 function! kb#init()
-  if !exists('g:kb_layout')
-    return
+  " Ensure we have g:kb_layout set
+  if !exists('g:kb_layout') || !len(g:kb_layout)
+    call kb#set_layout()
   endif
 
   " Mappings for spanish keyboard layouts
