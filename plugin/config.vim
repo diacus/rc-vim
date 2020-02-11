@@ -2,7 +2,7 @@
 " FILE        : plugin/config.vim
 " DESCRIPTION : Users's Vim configuration
 " CREATED BY  : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : sáb sep  8 15:39:04 CDT 2018
+" LAST CHANGE : mar feb 18 11:36:44 CST 2020
 " CREATION    : sáb ago  5 20:45:37 CDT 2017
 " VERSION     : 2.1
 " ===========================================================================
@@ -28,11 +28,11 @@ set splitbelow
 set splitright
 
 if has('gui_running')
-  colorscheme wombat
   set guioptions=aegit
   call config#window_resize()
+  silent! colorscheme wombat
 else
-  colorscheme wombat256mod
+  silent! colorscheme wombat256mod
 endif
 
 " Explorer setup
