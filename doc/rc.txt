@@ -15,6 +15,7 @@ Plugins included ................................ |rc-contents|
   Config ........................................ |rc-config|
     Mappings .................................... |rc-config-mappings|
   Keyboard ...................................... |rc-kb|
+  Python ........................................ |rc-python|
 
 ================================================================================
 CONFIG                                                               *rc-config*
@@ -35,7 +36,7 @@ NORMAL MODE MAPPINGS
   - Hit <Left> to go to the previous buffer
   - Hit <Right> to go to the next buffer
 
-Insert mode mappings
+INSERT MODE MAPPINGS
   - Hit {<CR> to insert a code block: >
       {
         ...your code goes here...
@@ -51,11 +52,6 @@ Insert mode mappings
         ...your code goes here...
       )
 <
-  - Hit "<CR> to insert a multi line python string: >
-      """
-        ...your text goes here...
-      """
-<
   - Hit a single quote character twice, and the cursor is going to be moved
     between them
   - Hit a double quote character twice, and the cursor is going to be moved
@@ -69,7 +65,7 @@ Insert mode mappings
   - Hit <Tab> key twice and the spell completition is going to be shown
 
 ================================================================================
-KEYBOARD                                                        *KeyboardPlugin*
+KEYBOARD                                                                 *rc-kb*
 
 Defines usefull mappings depending de language of your keyboard. In order to
 select a keyboard layout, set the |g:kb_layout| variable to one of these values:
@@ -90,5 +86,31 @@ won't be loaded.
 - For English
   - The semicolon is mapped to <colon> in normal and visual modes
 
+================================================================================
+PYTHON                                                               *rc-python*
+
+INSERT MODE MAPPINGS
+  - Hit "<CR> to insert a multi line python string: >
+      """
+        ...your text goes here...
+      """
+<
+  - Hit '<CR> to insert a multi line python string: >
+      '''
+        ...your text goes here...
+      '''
+<
+
+COMMANDS                                                    *rc-python-commands*
+
+                                                                   *:BreakPoint*
+:BreakPoint             Inserts a PDB breakpoint in the current buffer
+
+                                                                 *:UnbreakPoint*
+:UnbreakPoint           Deletes all the breakpoints (inserted through
+                        |:BreakPoint|)
+
+                                                                *rc-python-make*
+:make                   When a Python buffer is active, this command runs flake8
 
  vim:tw=78:et:ft=help:norl:
