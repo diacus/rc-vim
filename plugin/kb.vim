@@ -7,7 +7,7 @@
 " VERSION     : 2.1
 " ===========================================================================
 " Do not load twice
-if exists('g:did_kb')
+if !kb#should_load()
   finish
 endif
 let g:did_kb = 1

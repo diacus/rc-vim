@@ -7,16 +7,20 @@
 " VERSION     : 2.1
 " ===========================================================================
 
-function! kb#set_layout()
-  let platform = util#identify_platform()
-  if platform == 'MacOS' "We're on Mac OS
-    " TODO: There has to be a better way
-    let g:kb_layout='en'
-  else " We assume Linux
-    let g:kb_layout=util#chomp(
-      \ system("localectl status | awk '/Layout/ {print $3}'")
-      \)
+function! kb#should_load()
+  " Ensure we have g:kb_layout set and has a valid value before loading the
+  " plugin
+  if exists('g:did_kb')
+    return 0
   endif
+  if !exists('g:kb_layout')
+    return 0
+  endif
+  if index(['en', 'es', 'latam'], g:kb_layout) == -1
+    return 0
+  endif
+
+  return 1
 endfunction
 
 function! kb#es_generic_keys()
@@ -70,11 +74,6 @@ function! kb#en()
 endfunction
 
 function! kb#init()
-  " Ensure we have g:kb_layout set
-  if !exists('g:kb_layout') || !len(g:kb_layout)
-    call kb#set_layout()
-  endif
-
   " Mappings for spanish keyboard layouts
   if index(['es', 'latam'], g:kb_layout) >= 0
     " Add spanish to spell languages, since the keyboard kayout is in spanish
