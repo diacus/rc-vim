@@ -1,0 +1,94 @@
+INTRODUCTION                                                            *rc.vim*
+        _  _                                                 _              ~
+     __| |(_)  __ _   ___  _   _  ___     _ __  ___  __   __(_) _ __ ___    ~
+    / _` || | / _` | / __|| | | |/ __|   | '__|/ __| \ \ / /| || '_ ` _ \   ~
+   | (_| || || (_| || (__ | |_| |\__ \   | |  | (__  _\ V / | || | | | | |  ~
+    \__,_||_| \__,_| \___| \__,_||___/   |_|   \___|(_)\_/  |_||_| |_| |_|  ~
+
+                        General settings for Vim editor
+                                   by @diacus
+
+================================================================================
+CONTENTS                                                           *rc-contents*
+
+Plugins included ................................ |rc-contents|
+  Config ........................................ |rc-config|
+    Mappings .................................... |rc-config-mappings|
+  Keyboard ...................................... |rc-kb|
+
+================================================================================
+CONFIG                                                               *rc-config*
+
+This plugin loads settings to modify the behavior of the editor:
+
+ - turns on the cursor line and column
+ - sets the line numbering
+ - configures the behavior of netrw and Airline (if installed) plugins
+
+MAPPINGS                                                    *rc-config-mappings*
+
+NORMAL MODE MAPPINGS
+
+  - Hit <F3> to toggle the margin. when the margin is turned on, every character
+    beyond the margin will be highlighted with with red background.
+  - Hit <UP> to display the list of loaded buffers.
+  - Hit <Left> to go to the previous buffer
+  - Hit <Right> to go to the next buffer
+
+Insert mode mappings
+  - Hit {<CR> to insert a code block: >
+      {
+        ...your code goes here...
+      }
+<
+  - Hit [<CR> to insert a multi line array: >
+      [
+        ...your code goes here...
+      ]
+<
+  - Hit (<CR> to insert a multi line tuple: >
+      (
+        ...your code goes here...
+      )
+<
+  - Hit "<CR> to insert a multi line python string: >
+      """
+        ...your text goes here...
+      """
+<
+  - Hit a single quote character twice, and the cursor is going to be moved
+    between them
+  - Hit a double quote character twice, and the cursor is going to be moved
+    between them
+  - Hit a left parenthesis character twice, and the cursor is going to be
+    moved between them
+  - Hit a left square backet character twice, and the cursor is going to be
+    moved between them
+  - Hit a left bracket character twice, and the cursor is going to be moved
+    between them
+  - Hit <Tab> key twice and the spell completition is going to be shown
+
+================================================================================
+KEYBOARD                                                        *KeyboardPlugin*
+
+Defines usefull mappings depending de language of your keyboard. In order to
+select a keyboard layout, set the |g:kb_layout| variable to one of these values:
+
+- 'en' for en_US layout
+- 'es' for es_ES layout
+- 'latam' for es_MX layout
+
+If the |g:kb_layout| variable is not set or has a different value, this module
+won't be loaded.
+
+- For Spanish
+  - The ñ and Ñ keys are mapped to <colon> in both normal an visual mode
+  - <space> is mapped to / in both normal and visual mode
+  - In Spanish layout, the <leader> key is mapped to <comma>
+  - In Latin American layout, the <leader> key is mapped to the open question
+    mark (¿)
+- For English
+  - The semicolon is mapped to <colon> in normal and visual modes
+
+
+ vim:tw=78:et:ft=help:norl:
