@@ -30,9 +30,6 @@ set splitright
 if has('gui_running')
   set guioptions=aegit
   call config#window_resize()
-  silent! colorscheme wombat
-else
-  silent! colorscheme wombat256mod
 endif
 
 " Explorer setup
