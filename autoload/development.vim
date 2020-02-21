@@ -54,6 +54,7 @@ function! development#setup()
   setlocal formatoptions=croqj
   setlocal expandtab " No tabs in your source code :)
 
+  setlocal numberwidth=6
   " Show line numbers
   if v:version >= 703
     setlocal relativenumber
