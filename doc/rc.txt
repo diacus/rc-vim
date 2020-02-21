@@ -15,6 +15,7 @@ Plugins included ................................ |rc-contents|
   Config ........................................ |rc-config|
     Mappings .................................... |rc-config-mappings|
   Keyboard ...................................... |rc-kb|
+  Writing ....................................... |rc-writing|
   Python ........................................ |rc-python|
 
 ================================================================================
@@ -85,6 +86,27 @@ won't be loaded.
     mark (¿)
 - For English
   - The semicolon is mapped to <colon> in normal and visual modes
+
+================================================================================
+WRITING                                                             *rc-writing*
+
+This module turns on the following options:
+- 'autoindent'
+- 'wrap'
+- 'linebreak'
+- 'besides'
+
+Turns off the options:
+- 'number'
+- 'relativenumber'
+
+And sets the following value options:
+- 'textwidt' to 80 columns
+- 'selectmode' to "mouse"
+
+Also maps the <F4> key to toggle the 'a' format option (which enables the
+autoformat of parragraphs). See |fo-table|.
+
 
 ================================================================================
 PYTHON                                                               *rc-python*
