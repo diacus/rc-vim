@@ -2,7 +2,7 @@
 " FILE        : autoload/config.vim
 " DESCRIPTION : Users's Vim configuration
 " CREATED BY  : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : sáb sep  8 15:33:13 CDT 2018
+" LAST CHANGE : Thu Mar  5 23:51:00 CST 2020
 " CREATION    : sáb ago  5 23:53:30 CDT 2017
 " VERSION     : 2.1
 " ===========================================================================
@@ -27,14 +27,14 @@ endfunction
 
 function! config#hidden_list()
   let hidden_files = [
-    \ '__pycache__',
+    \ '__pycache__/**',
     \ '.*\.pyc',
     \ '.*\.o',
     \ '.*\.swp',
     \ '.*~',
     \ '.git',
     \ '.DS_Store',
-    \ 'node_modules',
+    \ '**/node_modules/**',
     \ 'tags'
     \ ]
 
