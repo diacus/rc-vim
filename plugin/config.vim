@@ -2,7 +2,7 @@
 " FILE        : plugin/config.vim
 " DESCRIPTION : Users's Vim configuration
 " CREATED BY  : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : mar feb 18 11:36:44 CST 2020
+" LAST CHANGE : Fri Mar 27 01:09:00 CST 2020
 " CREATION    : sáb ago  5 20:45:37 CDT 2017
 " VERSION     : 2.1
 " ===========================================================================
@@ -34,9 +34,9 @@ endif
 
 " Explorer setup
 let g:netrw_banner=0
-let g:netrw_liststyle=3
+let g:netrw_liststyle=2
 let g:netrw_list_hide=s:files_ignored
-let g:netrw_hide=1
+let g:netrw_hide=0
 let g:netrw_browsex_viewer=config#netrw_browsex_viewer()
 
 " Airline setup
