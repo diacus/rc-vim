@@ -2,7 +2,7 @@
 " FILE        : plugin/config.vim
 " DESCRIPTION : Users's Vim configuration
 " CREATED BY  : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : Fri Mar 27 01:09:00 CST 2020
+" LAST CHANGE : Sun Mar 29 12:22:02 CST 2020
 " CREATION    : sáb ago  5 20:45:37 CDT 2017
 " VERSION     : 2.1
 " ===========================================================================
@@ -33,11 +33,7 @@ if has('gui_running')
 endif
 
 " Explorer setup
-let g:netrw_banner=0
-let g:netrw_liststyle=2
-let g:netrw_list_hide=s:files_ignored
-let g:netrw_hide=0
-let g:netrw_browsex_viewer=config#netrw_browsex_viewer()
+call config#netrw()
 
 " Airline setup
 if exists(':AirlineRefresh')  " Set iff airline is installed
@@ -64,6 +60,7 @@ nnoremap <silent> <F3> :call config#margin()<CR>
 nnoremap <Up> :ls<CR>:b
 nnoremap <Left> :bprevious<CR>
 nnoremap <Right> :bnext<CR>
+nnoremap <Down> <Nop>
 
 " Insert mode key mappings
 inoremap {<CR> {<CR>}<Esc>O

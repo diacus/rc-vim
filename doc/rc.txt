@@ -14,6 +14,7 @@ CONTENTS                                                           *rc-contents*
 Plugins included ................................ |rc-contents|
   Config ........................................ |rc-config|
     Mappings .................................... |rc-config-mappings|
+    NETRW ....................................... |rc-config-netrw|
   Keyboard ...................................... |rc-kb|
   Writing ....................................... |rc-writing|
   Python ........................................ |rc-python|
@@ -32,11 +33,13 @@ MAPPINGS                                                    *rc-config-mappings*
 
 NORMAL MODE MAPPINGS
 
-  - Hit <F3> to toggle the margin. when the margin is turned on, every character
+  - Hit <F3> to toggle the margin. When the margin is turned on, every character
     beyond the margin will be highlighted with with red background.
   - Hit <UP> to display the list of loaded buffers.
   - Hit <Left> to go to the previous buffer
   - Hit <Right> to go to the next buffer
+  - Hit <Tab> key and the spell completion is going to be shown
+  - The <Down> key is disabled in normal mode
 
 INSERT MODE MAPPINGS
   - Hit {<CR> to insert a code block: >
@@ -60,17 +63,32 @@ INSERT MODE MAPPINGS
     between them
   - Hit a left parenthesis character twice, and the cursor is going to be
     moved between them
-  - Hit a left square backet character twice, and the cursor is going to be
+  - Hit a left square bracket character twice, and the cursor is going to be
     moved between them
   - Hit a left bracket character twice, and the cursor is going to be moved
     between them
-  - Hit <Tab> key twice and the spell completition is going to be shown
+
+NETRW                                                          *rc-config-netrw*
+
+By default the help banner is hidden and the open tool is properly set depending
+on the operating system. Also you can control the style netrw uses to display
+and open the files by setting the value of g:netrw_style variable
+
+Use the value 'tree' to display netrw in tree mode within a 20% window size and
+to open the files in the previous window: >
+    :set g:netrw_style = 'tree'
+<
+
+Use the value 'full' to display netrw in full mode within the current window: >
+    :set g:netrw_style = 'full'
+<
 
 ================================================================================
 KEYBOARD                                                                 *rc-kb*
 
-Defines usefull mappings depending de language of your keyboard. In order to
-select a keyboard layout, set the |g:kb_layout| variable to one of these values:
+Defines useful mappings depending de language of your keyboard. In order to
+select a keyboard layout, set the |g:kb_layout| variable to one of these
+values:
 
 - 'en' for en_US layout
 - 'es' for es_ES layout
@@ -95,18 +113,17 @@ This module turns on the following options:
 - 'autoindent'
 - 'wrap'
 - 'linebreak'
-- 'besides'
 
 Turns off the options:
 - 'number'
 - 'relativenumber'
 
 And sets the following value options:
-- 'textwidt' to 80 columns
+- 'textwidth' to 80 columns
 - 'selectmode' to "mouse"
 
 Also maps the <F4> key to toggle the 'a' format option (which enables the
-autoformat of parragraphs). See |fo-table|.
+autoformat of paragraphs). See |fo-table|.
 
 
 ================================================================================
@@ -135,6 +152,11 @@ COMMANDS                                                    *rc-python-commands*
 
                                                                 *rc-python-make*
 :make                   When a Python buffer is active, this command runs flake8
+
+VARIABLES                                                  *rc-python-variables*
+
+g:use_bpython  - Assumes you have installed the bpython interpreter
+g:use_ipython  - Assumes you have installed the ipython interpreter
 
 ================================================================================
 TEX                                                                     *rc-tex*

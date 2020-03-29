@@ -2,7 +2,7 @@
 " FILE        : autoload/config.vim
 " DESCRIPTION : Users's Vim configuration
 " CREATED BY  : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : Thu Mar  5 23:51:00 CST 2020
+" LAST CHANGE : Sun Mar 29 12:47:34 CST 2020
 " CREATION    : sáb ago  5 23:53:30 CDT 2017
 " VERSION     : 2.1
 " ===========================================================================
@@ -44,4 +44,30 @@ endfunction
 function! config#netrw_browsex_viewer()
   let viewers = { 'Linux': 'xdg-open', 'MacOS': 'open', 'Windows': 'expl2.cmd' }
   return viewers[util#identify_platform()]
+endfunction
+
+function config#netrw_tree_style()
+  let g:netrw_liststyle = 3
+  let g:netrw_browse_split = 4
+  let g:netrw_winsize = 20
+endfunction
+
+function config#netrw_full_style()
+  let g:netrw_liststyle = 2
+  let g:netrw_browse_split = 0
+  let g:netrw_winsize = 0
+endfunction
+
+function config#netrw()
+  let g:netrw_banner=0
+  let g:netrw_hide=0
+  let g:netrw_browsex_viewer=config#netrw_browsex_viewer()
+
+  if exists('g:netrw_style')
+    if g:netrw_style == 'tree'
+      call config#netrw_tree_style()
+    elseif g:netrw_style == 'full'
+      call config#netrw_full_style()
+    endif
+  endif
 endfunction
