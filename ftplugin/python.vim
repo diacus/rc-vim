@@ -2,12 +2,12 @@
 " FILE        : ftplugin/python.vim
 " DESCRIPTION : Plugin for Python file type
 " AUTHOR      : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : sáb may  5 22:35:54 CDT 2018
+" LAST CHANGE : Fri Apr  3 12:46:16 CST 2020
 " CREATION    : mié feb 14 23:55:19 CST 2018
 " VERSION     : 2.1
 " ===========================================================================
 
-setlocal makeprg=flake8  " Source code linting
+call python#setup()
 
 let b:code_indent = 4
 

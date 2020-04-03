@@ -2,7 +2,7 @@
 " FILE        : autoload/python.vim
 " DESCRIPTION : Helper functions for ftplugin/python.vim
 " AUTHOR      : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : Tue Feb 11 17:06:33 CST 2020
+" LAST CHANGE : Fri Apr  3 12:46:39 CST 2020
 " CREATION    : mié feb 14 23:55:04 CST 2018
 " VERSION     : 2.1
 " ===========================================================================
@@ -23,4 +23,10 @@ endfunction
 
 function! python#breakpoint_del()
   g/BREAKPOINT/d
+endfunction
+
+function python#setup()
+  if !filereadable('Makefile')
+    setlocal makeprg=flake8
+  endif
 endfunction
