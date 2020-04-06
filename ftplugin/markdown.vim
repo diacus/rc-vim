@@ -2,15 +2,12 @@
 " FILE        : ftplugin/markdown.vim
 " DESCRIPTION : Specific Vim configuration for Markdown docuemts.
 " MAINTAINER  : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : vie ago  4 01:37:43 CDT 2017
+" LAST CHANGE : Mon Apr  6 15:37:56 CDT 2020
 " CREATION    : Wed Apr 20 01:08:50 CDT 2016
 " VERSION     : 2.1
 " ===========================================================================
-setlocal shiftwidth=2
-setlocal tabstop=2
-setlocal nolinebreak
-setlocal makeprg=make\ -f\ ~/.vim/tools/make/markdown.mk
-setlocal foldlevel=2
+
+call markdown#setup()
 
 " Headers for markdown documents
 nnoremap <leader>h1  I#<space><ESC>
