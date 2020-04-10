@@ -2,7 +2,7 @@
 " FILE        : autoload/config.vim
 " DESCRIPTION : Users's Vim configuration
 " CREATED BY  : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : Sun Mar 29 12:47:34 CST 2020
+" LAST CHANGE : Fri Apr 10 14:02:03 CDT 2020
 " CREATION    : sáb ago  5 23:53:30 CDT 2017
 " VERSION     : 2.1
 " ===========================================================================
@@ -68,6 +68,41 @@ function config#netrw()
       call config#netrw_tree_style()
     elseif g:netrw_style == 'full'
       call config#netrw_full_style()
+    endif
+  endif
+endfunction
+
+function! config#zenmode_toogle()
+  if exists('b:did_development_setup')
+    call config#cursor_cross_toogle()
+    call config#line_numbering_toogle()
+  else
+    setlocal cursorline!
+  endif
+
+  if exists('g:syntax_on')
+    syntax off
+  else
+    syntax on
+  endif
+endfunction
+
+function! config#cursor_cross_toogle()
+  setlocal cursorcolumn!
+  if &cursorcolumn
+    setlocal cursorline
+  else
+    setlocal nocursorline
+  endif
+endfunction
+
+function! config#line_numbering_toogle()
+  set number!
+  if v:version >= 703
+    if &number
+      setlocal relativenumber
+    else
+      setlocal norelativenumber
     endif
   endif
 endfunction

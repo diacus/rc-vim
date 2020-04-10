@@ -2,7 +2,7 @@
 " FILE        : plugin/config.vim
 " DESCRIPTION : Users's Vim configuration
 " CREATED BY  : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : Sun Mar 29 12:22:02 CST 2020
+" LAST CHANGE : Fri Apr 10 14:02:12 CDT 2020
 " CREATION    : sáb ago  5 20:45:37 CDT 2017
 " VERSION     : 2.1
 " ===========================================================================
@@ -61,6 +61,7 @@ nnoremap <Up> :ls<CR>:b
 nnoremap <Left> :bprevious<CR>
 nnoremap <Right> :bnext<CR>
 nnoremap <Down> <Nop>
+nnoremap <leader>z :call config#zenmode_toogle()<CR>
 
 " Insert mode key mappings
 inoremap {<CR> {<CR>}<Esc>O

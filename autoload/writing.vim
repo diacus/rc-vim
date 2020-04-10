@@ -10,7 +10,7 @@ function! writing#setup()
   if exists('b:istext')
     return
   endif
-  if &ft !~ 'text\|tex\|latex\|html\|xml\|markdown'
+  if &filetype !~ 'text\|tex\|latex\|html\|xml\|markdown'
     unlet! b:istext
     return
   endif
@@ -35,9 +35,9 @@ function! writing#setup()
 endfunction
 
 function! writing#toogle_foa()
-  if &fo =~ 'a'
-    set fo-=a
+  if &formatoptions =~ 'a'
+    setlocal formatoptions-=a
   else
-    set fo+=a
+    setlocal formatoptions+=a
   endif
 endfunction

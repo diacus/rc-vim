@@ -8,19 +8,22 @@ INTRODUCTION                                                            *rc.vim*
                         General settings for Vim editor
                                    by @diacus
 
-================================================================================
+==============================================================================
 CONTENTS                                                           *rc-contents*
 
-Plugins included ................................ |rc-contents|
-  Config ........................................ |rc-config|
-    Mappings .................................... |rc-config-mappings|
-    NETRW ....................................... |rc-config-netrw|
-  Keyboard ...................................... |rc-kb|
-  Writing ....................................... |rc-writing|
-  Python ........................................ |rc-python|
-  Tex ........................................... |rc-tex|
+Contents ......................................................... |rc-contents|
+  Config ........................................................... |rc-config|
+  Variables ..................................................... |rc-variables|
+  Mappings ....................................................... |rc-mappings|
+    Normal Mode Mappings .................................. |rc-normal-mappings|
+    Insert Mode Mappings .................................. |rc-insert-mappings|
+  netrw ...................................................... |rc-config-netrw|
+  Keyboard ............................................................. |rc-kb|
+  Writing ......................................................... |rc-writing|
+  Python ........................................................... |rc-python|
+  Tex ................................................................. |rc-tex|
+==============================================================================
 
-================================================================================
 CONFIG                                                               *rc-config*
 
 This plugin loads settings to modify the behavior of the editor:
@@ -28,45 +31,97 @@ This plugin loads settings to modify the behavior of the editor:
  - turns on the cursor line and column
  - sets the line numbering
  - configures the behavior of netrw and Airline (if installed) plugins
+ - enables the :Justify command
 
-MAPPINGS                                                    *rc-config-mappings*
+VARIABLES                                                         *rc-variables*
 
-NORMAL MODE MAPPINGS
+*g:use_bpython*  When inserting  a Python breakpoint  uses  the  library  shiped
+               with the bpython interpreter >
 
-  - Hit <F3> to toggle the margin. When the margin is turned on, every character
-    beyond the margin will be highlighted with with red background.
-  - Hit <UP> to display the list of loaded buffers.
-  - Hit <Left> to go to the previous buffer
-  - Hit <Right> to go to the next buffer
-  - Hit <Tab> key and the spell completion is going to be shown
-  - The <Down> key is disabled in normal mode
+    :let g:use_bpython = 1
+<
 
-INSERT MODE MAPPINGS
-  - Hit {<CR> to insert a code block: >
+*g:use_ipython*  When inserting a Python breakpoint uses the library shiped
+               with the ipdb package >
+
+    :let g:use_ipython = 1
+<
+
+*g:netrw_style* By default the  help  banner is hidden  and  the  open  tool  is
+              properly set depending  on the operating system.  Also  you  can
+control the style netrw uses to display and open the  files  by  setting  this
+variable.  Use the value 'tree' to display netrw in tree  mode  within  a  20%
+window size and to open the files in the previous window: >
+
+    :let g:netrw_style = 'tree'
+<
+
+Use the value 'full' to display netrw in full mode within the current window: >
+
+    :let g:netrw_style = 'full'
+<
+
+MAPPINGS                                                           *rc-mappings*
+
+NORMAL MODE MAPPINGS                                        *rc-normal-mappings*
+
+<F2>      Toogles spell checking, when it is active, the  syntax  highlighting
+          is turned off
+
+<F3>      Toggles the margin.  When the margin is turned on,  every  character
+
+          beyond the margin will be highlighted with with red background
+
+<F4>      Toogles automatic formatting for paragraphs. See |fo-table| for
+          details
+
+<leader>z Toggles syntax highlighting, line numbering and cursor line and
+          column
+
+<UP>      Displays the list of loaded buffers.
+
+<Left>    Jumps to previous buffer
+
+<Right>   Jumps to next buffer
+
+<Tab>     Displays spell completion
+
+<Down>    Disabled in normal mode
+
+INSERT MODE MAPPINGS                                        *rc-insert-mappings*
+
+{<CR>       Inserts a code block >
+
       {
         ...your code goes here...
       }
 <
-  - Hit [<CR> to insert a multi line array: >
+[<CR>       Inserts a multi line array >
+
       [
         ...your code goes here...
       ]
 <
-  - Hit (<CR> to insert a multi line tuple: >
+(<CR>       Inserts a multi line tuple >
+
       (
         ...your code goes here...
       )
 <
-  - Hit a single quote character twice, and the cursor is going to be moved
-    between them
-  - Hit a double quote character twice, and the cursor is going to be moved
-    between them
-  - Hit a left parenthesis character twice, and the cursor is going to be
-    moved between them
-  - Hit a left square bracket character twice, and the cursor is going to be
-    moved between them
-  - Hit a left bracket character twice, and the cursor is going to be moved
-    between them
+''          Inserts a single quoted string, placing the cursor inside
+
+""          Inserts a double quoted string, placing the cursor inside
+
+((          Inserts a pair of matching parenthesis placing the cursor inside
+            them
+
+[[          Inserts a pair of matching square brackets placing the cursor
+            inside them
+
+{{          Inserts a pair of matching curly brackets placing the cursor
+            inside them
+
+<Tab><Tab>  Moves the cursor to the end of the line
 
 NETRW                                                          *rc-config-netrw*
 
@@ -76,14 +131,16 @@ and open the files by setting the value of g:netrw_style variable
 
 Use the value 'tree' to display netrw in tree mode within a 20% window size and
 to open the files in the previous window: >
+
     :set g:netrw_style = 'tree'
 <
 
 Use the value 'full' to display netrw in full mode within the current window: >
+
     :set g:netrw_style = 'full'
 <
 
-================================================================================
+==============================================================================
 KEYBOARD                                                                 *rc-kb*
 
 Defines useful mappings depending de language of your keyboard. In order to
@@ -106,7 +163,7 @@ won't be loaded.
 - For English
   - The semicolon is mapped to <colon> in normal and visual modes
 
-================================================================================
+==============================================================================
 WRITING                                                             *rc-writing*
 
 This module turns on the following options:
@@ -122,11 +179,7 @@ And sets the following value options:
 - 'textwidth' to 80 columns
 - 'selectmode' to "mouse"
 
-Also maps the <F4> key to toggle the 'a' format option (which enables the
-autoformat of paragraphs). See |fo-table|.
-
-
-================================================================================
+==============================================================================
 PYTHON                                                               *rc-python*
 
 INSERT MODE MAPPINGS
@@ -151,18 +204,16 @@ COMMANDS                                                    *rc-python-commands*
                         |:BreakPoint|)
 
                                                                 *rc-python-make*
-:make                   When a Python buffer is active, this command runs flake8
 
-VARIABLES                                                  *rc-python-variables*
+:make                   When a Python buffer is active, this command runs
+                        flake8 unless there is a Makefile in the current
+                        working directory
 
-g:use_bpython  - Assumes you have installed the bpython interpreter
-g:use_ipython  - Assumes you have installed the ipython interpreter
-
-================================================================================
+==============================================================================
 TEX                                                                     *rc-tex*
 
-When working with tex or latex buffers, the indentation is set to one column and
-the makeprg option is set to use `latexmk` program, so ensure you have it
+When working with tex or latex buffers, the indentation is set to  one  column
+and the  makeprg option is set to use `latexmk` program, so ensure you have  it
 installed.
 
 COMMANDS                                                       *rc-tex-commands*
