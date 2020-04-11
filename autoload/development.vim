@@ -2,7 +2,7 @@
 " FILE        : autoload/development.vim
 " DESCRIPTION : Helper functions for plugin/development.vim
 " AUTHOR      : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : sáb sep  8 15:29:00 CDT 2018
+" LAST CHANGE : Fri Apr 10 22:41:52 CDT 2020
 " CREATION    : Thu Jun  7 11:15:14 CDT 2018
 " VERSION     : 2.1
 " ===========================================================================
@@ -12,7 +12,7 @@ let s:filetypes = [
       \'cpp',
       \'css',
       \'go',
-      \'hakell',
+      \'haskell',
       \'html',
       \'java',
       \'javascript',
