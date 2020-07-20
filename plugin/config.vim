@@ -2,7 +2,7 @@
 " FILE        : plugin/config.vim
 " DESCRIPTION : Users's Vim configuration
 " CREATED BY  : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : Fri Apr 10 14:02:12 CDT 2020
+" LAST CHANGE : Mon Jul 20 11:30:25 CDT 2020
 " CREATION    : sáb ago  5 20:45:37 CDT 2017
 " VERSION     : 2.1
 " ===========================================================================
@@ -82,3 +82,11 @@ autocmd BufNewFile,BufRead *.ts set filetype=typescript
 " Thank you stack overflow
 " https://vi.stackexchange.com/questions/7889/cannot-exit-vim-even-using-q
 autocmd FileType netrw setl bufhidden=delete
+
+augroup SplitsResize
+  autocmd!
+  " Redimensiona las divisiones automáticamente, la división actual ocupa 85%
+  autocmd WinEnter * :call config#splits_resize()
+augroup END
+
+command! -nargs=0 SplitResizeToogle call config#splits_resize_toogle()

@@ -61,6 +61,13 @@ Use the value 'full' to display netrw in full mode within the current window: >
     :let g:netrw_style = 'full'
 <
 
+*g:split_resize* Set this variable to 1 to make the editor resize the active
+               split to 85 columns width dynamically >
+    :let g:split_resize = 1
+<
+
+Use the command :SplitResizeToogle to control this behavior
+
 MAPPINGS                                                           *rc-mappings*
 
 NORMAL MODE MAPPINGS                                        *rc-normal-mappings*
@@ -122,6 +129,12 @@ INSERT MODE MAPPINGS                                        *rc-insert-mappings*
             inside them
 
 <Tab><Tab>  Moves the cursor to the end of the line
+
+COMMANDS                                                    *rc-config-commands*
+
+                                                            *:SplitResizeToogle*
+:SplitResizeToogle  Enablaes and disables the automatic vertical split resize,
+                    the current split width is set to 85 columns.
 
 NETRW                                                          *rc-config-netrw*
 

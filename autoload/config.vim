@@ -2,7 +2,7 @@
 " FILE        : autoload/config.vim
 " DESCRIPTION : Users's Vim configuration
 " CREATED BY  : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : Fri Apr 10 14:02:03 CDT 2020
+" LAST CHANGE : Mon Jul 20 11:30:05 CDT 2020
 " CREATION    : sáb ago  5 23:53:30 CDT 2017
 " VERSION     : 2.1
 " ===========================================================================
@@ -105,4 +105,21 @@ function! config#line_numbering_toogle()
       setlocal norelativenumber
     endif
   endif
+endfunction
+
+function config#splits_resize_toogle()
+  if (!exists('g:split_resize') || g:split_resize != 1)
+    let g:split_resize = 1
+  else
+    unlet g:split_resize
+    set winwidth=20
+  endif
+endfunction
+
+function config#splits_resize()
+  if (!exists('g:split_resize') || g:split_resize != 1)
+    return
+  endif
+  set winwidth=85
+  wincmd =
 endfunction
