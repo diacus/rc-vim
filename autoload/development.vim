@@ -7,7 +7,7 @@
 " VERSION     : 2.1
 " ===========================================================================
 
-let s:filetypes = [
+let g:code_filetypes = [
       \'c',
       \'cpp',
       \'css',
@@ -35,7 +35,7 @@ let s:filetypes = [
       \]
 
 function! development#setup()
-  if exists('b:did_development_setup') || index(s:filetypes, &ft) == -1
+  if exists('b:did_development_setup') || index(g:code_filetypes, &ft) == -1
     return
   endif
 
