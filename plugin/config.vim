@@ -2,7 +2,7 @@
 " FILE        : plugin/config.vim
 " DESCRIPTION : Users's Vim configuration
 " CREATED BY  : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : Mon Jul 20 11:30:25 CDT 2020
+" LAST CHANGE : lun 23 nov 2020 16:55:26 CST
 " CREATION    : sáb ago  5 20:45:37 CDT 2017
 " VERSION     : 2.1
 " ===========================================================================
@@ -12,7 +12,6 @@ filetype indent on
 
 let s:files_ignored = config#hidden_list()
 
-set cursorline
 set encoding=utf-8
 set grepprg=grep\ -nH\ $*
 set list

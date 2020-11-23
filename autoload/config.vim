@@ -2,7 +2,7 @@
 " FILE        : autoload/config.vim
 " DESCRIPTION : Users's Vim configuration
 " CREATED BY  : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : Mon Jul 20 11:30:05 CDT 2020
+" LAST CHANGE : lun 23 nov 2020 16:54:35 CST
 " CREATION    : sáb ago  5 23:53:30 CDT 2017
 " VERSION     : 2.1
 " ===========================================================================
@@ -88,6 +88,12 @@ function! config#zenmode_toogle()
 endfunction
 
 function! config#cursor_cross_toogle()
+  if (!exists('g:cursor_cross') || g:cursor_cross != 1)
+    setlocal nocursorcolumn
+    setlocal nocursorline
+    return
+  endif
+
   setlocal cursorcolumn!
   if &cursorcolumn
     setlocal cursorline
