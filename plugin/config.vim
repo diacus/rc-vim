@@ -78,6 +78,7 @@ inoremap <Tab><Tab> <Esc>Ea
 " Auto commands
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.ts set filetype=typescript
+autocmd BufNewFile,BufRead *.nfo, *.NFO set filetype=nfo
 
 " Thank you stack overflow
 " https://vi.stackexchange.com/questions/7889/cannot-exit-vim-even-using-q
