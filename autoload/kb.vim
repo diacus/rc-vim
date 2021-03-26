@@ -2,7 +2,7 @@
 " FILE        : autoload/kb.vim
 " DESCRIPTION : Helper functions for plugin/kb.vim
 " AUTHOR      : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : Tue Feb 11 17:01:56 CST 2020
+" LAST CHANGE : Fri Mar 26 14:33:38 CST 2021
 " CREATION    : sáb ago 19 02:03:43 CDT 2017
 " VERSION     : 2.1
 " ===========================================================================
@@ -69,8 +69,8 @@ function! kb#latam()
 endfunction
 
 function! kb#en()
-  nnoremap ; :
-  vnoremap ; :
+  nnoremap ;; :
+  vnoremap ;; :
 endfunction
 
 function! kb#init()
