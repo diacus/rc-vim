@@ -2,7 +2,7 @@
 " FILE        : autoload/kb.vim
 " DESCRIPTION : Helper functions for plugin/kb.vim
 " AUTHOR      : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : Tue Feb 11 17:01:56 CST 2020
+" LAST CHANGE : Thu Apr  1 18:31:55 CST 2021
 " CREATION    : sáb ago 19 02:03:43 CDT 2017
 " VERSION     : 2.1
 " ===========================================================================
@@ -16,7 +16,7 @@ function! kb#should_load()
   if !exists('g:kb_layout')
     return 0
   endif
-  if index(['en', 'es', 'latam'], g:kb_layout) == -1
+  if index(['es', 'latam'], g:kb_layout) == -1
     return 0
   endif
 
@@ -68,11 +68,6 @@ function! kb#latam()
   call kb#es_latam_keys()
 endfunction
 
-function! kb#en()
-  nnoremap ; :
-  vnoremap ; :
-endfunction
-
 function! kb#init()
   " Mappings for spanish keyboard layouts
   if index(['es', 'latam'], g:kb_layout) >= 0
@@ -83,5 +78,4 @@ function! kb#init()
 
   let Kb = function('kb#' . g:kb_layout)
   call Kb()
-
 endfunction
