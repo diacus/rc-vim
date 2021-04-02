@@ -95,6 +95,9 @@ NORMAL MODE MAPPINGS                                        *rc-normal-mappings*
 
 <Down>    Disabled in normal mode
 
+<leader>e Toggles :Lexplore with tree listing style
+
+
 INSERT MODE MAPPINGS                                        *rc-insert-mappings*
 
 {<CR>       Inserts a code block >
