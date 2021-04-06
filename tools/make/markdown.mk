@@ -1,6 +1,6 @@
 PANDOC=pandoc
-WP=~/.vim/tools/wp/compiler
-MARKDOWN=-s --toc -H ~/.vim/tools/css/markdown.css --from=markdown --to=html5 --tab-stop=2
+WP=../wp/compiler
+MARKDOWN=-s --toc -H ../css/markdown.css --from=markdown --to=html5 --tab-stop=2
 JUSTIFY='s/<p>/<p style="text-align:justify;">/g'
 BLANK='s/<a href="([^\#])/<a target="_blank" href="\1/g'
 
@@ -28,4 +28,3 @@ wp: $(patsubst %.md,%.wp,$(wildcard *.md))
 
 clean:
 	rm -f *.html *.wp
-
