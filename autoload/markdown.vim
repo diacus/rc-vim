@@ -2,7 +2,7 @@
 " FILE        : autoload/markdown.vim
 " DESCRIPTION : Helper fuctions for ftplugin/markdown.vim
 " MAINTAINER  : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : Mon Apr  6 15:37:56 CDT 2020
+" LAST CHANGE : mar 06 abr 2021 17:17:04 CDT
 " CREATION    : vie ago  4 01:29:21 CDT 2017
 " VERSION     : 2.1
 " ===========================================================================
@@ -33,7 +33,8 @@ endfunction
 
 function markdown#setup()
   if !filereadable('Makefile')
-    setlocal makeprg=make\ -f\ ~/.vim/tools/make/markdown.mk
+    let s:directory = expand('<spath>:p:h')
+    let &l:makeprg = 'make -f ' . s:directory . '/../tools/make/markdown.mk'
   endif
   setlocal shiftwidth=2
   setlocal tabstop=2
