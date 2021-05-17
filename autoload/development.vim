@@ -2,7 +2,7 @@
 " FILE        : autoload/development.vim
 " DESCRIPTION : Helper functions for plugin/development.vim
 " AUTHOR      : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : Thu May  7 09:59:01 CDT 2020
+" LAST CHANGE : Mon May 17 09:26:33 CDT 2021
 " CREATION    : Thu Jun  7 11:15:14 CDT 2018
 " VERSION     : 2.1
 " ===========================================================================
@@ -76,12 +76,14 @@ endfunction
 
 function! development#update_tags()
   if filereadable('tags')
-    silent !ctags -R --exclude=.venv --exclude=node_modules .
+    execute 'silent !ctags -R --exclude=.venv --exclude=node_modules . &'
+    redraw!
   endif
 endfunction
 
 function! development#make_tags()
   if exists('b:did_development_setup')
-    silent !ctags -R .
+    execute 'silent !ctags -R --exclude=.venv --exclude=node_modules . &'
+    redraw!
   endif
 endfunction
