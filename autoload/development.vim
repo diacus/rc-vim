@@ -2,9 +2,8 @@
 " FILE        : autoload/development.vim
 " DESCRIPTION : Helper functions for plugin/development.vim
 " AUTHOR      : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : Mon May 17 09:26:33 CDT 2021
+" LAST CHANGE : Tue Jun 29 18:23:00 CDT 2021
 " CREATION    : Thu Jun  7 11:15:14 CDT 2018
-" VERSION     : 2.1
 " ===========================================================================
 
 let g:code_filetypes = [
@@ -41,31 +40,36 @@ function! development#setup()
 
   let code_width = exists('b:code_width')? b:code_width : 80
   let code_indent = exists('b:code_indent')? b:code_indent : 2
-  let code_margin = code_width + 1
+  let code_margin = &textwidth + 1
 
   " Format
-  for option in ['textwidth', 'tabstop', 'shiftwidth', 'softtabstop']
-    exe 'setlocal ' . option . '=' . code_indent
+  for option in ['tabstop', 'shiftwidth', 'softtabstop']
+    execute 'setlocal ' . option . '=' . code_indent
   endfor
 
-  execute 'setlocal textwidth=' . code_width
   execute 'match ErrorMsg /\%>'. code_margin .'v.\+/'
 
   setlocal formatoptions=croqj
   setlocal expandtab " No tabs in your source code :)
 
   setlocal numberwidth=6
-  " Show line numbers
-  if v:version >= 703
-    setlocal relativenumber
-  endif
-  setlocal number
-
-  " Where is the cursor?
-  setlocal cursorcolumn
-  setlocal cursorline
 
   let b:did_development_setup = 1
+endfunction
+
+function! development#toogle_number()
+  " Show line numbers
+  if v:version >= 703
+    let &relativenumber = &number
+    set relativenumber!
+  endif
+  set number!
+endfunction
+
+function! development#toogle_cursor_cross()
+  let &cursorcolumn = &cursorline
+  set cursorcolumn!
+  set cursorline!
 endfunction
 
 function! development#date()
