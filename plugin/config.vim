@@ -2,9 +2,8 @@
 " FILE        : plugin/config.vim
 " DESCRIPTION : Users's Vim configuration
 " CREATED BY  : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : Mon Jul 20 11:30:25 CDT 2020
+" LAST CHANGE : Tue Jun 29 18:51:55 CDT 2021
 " CREATION    : sáb ago  5 20:45:37 CDT 2017
-" VERSION     : 2.1
 " ===========================================================================
 syntax on
 filetype plugin on
@@ -15,6 +14,7 @@ let s:files_ignored = config#hidden_list()
 set cursorline
 set encoding=utf-8
 set grepprg=grep\ -nH\ $*
+set hidden
 set list
 set listchars=tab:▸\ ,trail:·
 set mouse=a
@@ -26,6 +26,7 @@ set wildmenu
 let &wildignore=s:files_ignored
 set splitbelow
 set splitright
+set textwidth=80
 
 if has('gui_running')
   set guioptions=aegit
