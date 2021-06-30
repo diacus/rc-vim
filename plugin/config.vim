@@ -11,7 +11,6 @@ filetype indent on
 
 let s:files_ignored = config#hidden_list()
 
-set cursorline
 set encoding=utf-8
 set grepprg=grep\ -nH\ $*
 set hidden
