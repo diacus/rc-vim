@@ -2,7 +2,7 @@
 " FILE        : plugin/config.vim
 " DESCRIPTION : Users's Vim configuration
 " CREATED BY  : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : Tue Jun 29 18:51:55 CDT 2021
+" LAST CHANGE : Sun Feb  6 15:59:34 CST 2022
 " CREATION    : sáb ago  5 20:45:37 CDT 2017
 " ===========================================================================
 syntax on
@@ -76,7 +76,6 @@ inoremap {{ {}<Esc>i
 inoremap <Tab><Tab> <Esc>Ea
 
 " Auto commands
-autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.ts set filetype=typescript
 autocmd BufNewFile,BufRead *.nfo, *.NFO set filetype=nfo
 
