@@ -54,8 +54,6 @@ endif
 runtime! macros/justify.vim
 
 
-" Normal mode key mappings
-nnoremap <silent> <F3> :call config#margin()<CR>
 " - Buffer navigation
 nnoremap <Up> :ls<CR>:b
 nnoremap <Left> :bprevious<CR>
@@ -76,7 +74,6 @@ inoremap {{ {}<Esc>i
 inoremap <Tab><Tab> <Esc>Ea
 
 " Auto commands
-autocmd BufNewFile,BufRead *.ts set filetype=typescript
 autocmd BufNewFile,BufRead *.nfo, *.NFO set filetype=nfo
 
 " Thank you stack overflow

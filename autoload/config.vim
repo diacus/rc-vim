@@ -2,21 +2,10 @@
 " FILE        : autoload/config.vim
 " DESCRIPTION : Users's Vim configuration
 " CREATED BY  : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : Mon Jul 20 11:30:05 CDT 2020
+" LAST CHANGE : Thu Jul 27 10:43:06 PM CST 2023
 " CREATION    : sáb ago  5 23:53:30 CDT 2017
 " VERSION     : 2.1
 " ===========================================================================
-
-function! config#margin()
-  let txt_width = &textwidth > 0 ? &textwidth + 1 : 80
-  if exists('b:margin')
-    execute 'match Normal /\%>'. txt_width . 'v.\+/'
-    unlet b:margin
-  else
-    execute 'match ErrorMsg /\%>'. txt_width . 'v.\+/'
-    let b:margin = 1
-  endif
-endfunction
 
 function! config#window_resize()
   let txt_width = &textwidth > 0 ? &textwidth : 80
@@ -84,26 +73,6 @@ function! config#zenmode_toogle()
     syntax off
   else
     syntax on
-  endif
-endfunction
-
-function! config#cursor_cross_toogle()
-  setlocal cursorcolumn!
-  if &cursorcolumn
-    setlocal cursorline
-  else
-    setlocal nocursorline
-  endif
-endfunction
-
-function! config#line_numbering_toogle()
-  set number!
-  if v:version >= 703
-    if &number
-      setlocal relativenumber
-    else
-      setlocal norelativenumber
-    endif
   endif
 endfunction
 
